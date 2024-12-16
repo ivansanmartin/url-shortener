@@ -1,22 +1,24 @@
-from app.core.config import env
 from pymongo import MongoClient
-from pymongo.errors import ConnectionFailure
+from pymongo.errors import ConnectionFailure, ConfigurationError, PyMongoError
 
-mongo_envs = env.get('mongodb')
+class MongoDB:
+    def __init__(self, uri: str, database_name: str):
+        try:
+            self.client = MongoClient(uri, serverSelectionTimeoutMS=5000)
+            self.database = self.client[database_name]
+            self.client.admin.command("ping")
+            print("Successfully connected to MongoDB")
+        except ConnectionFailure as e:
+            raise RuntimeError(f"Failed to connect to MongoDB: {str(e)}")
+        except ConfigurationError as e:
+            raise RuntimeError(f"Configuration error in MongoDB: {str(e)}")
+        except PyMongoError as e:
+            raise RuntimeError(f"Unexpected MongoDB error: {str(e)}")
 
-def get_database():
-    try:
-        username = mongo_envs.get('username')
-        password = mongo_envs.get('password')
-        CONNECTION_STRING = f"mongodb://{username}:{password}@localhost:27017/url-shortener-db?authSource=admin"
-        
-        client = MongoClient(CONNECTION_STRING)
-        client.admin.command('ping')
-        
-        return client['url-shortener-db']
-    
-    except ConnectionFailure as e:
-        print(f"No se pudo conectar a MongoDB: {e}")
-        return None
-
-
+    def get_collection(self, name: str):
+        try:
+            if name not in self.database.list_collection_names():
+                raise ValueError(f"Collection '{name}' does not exist")
+            return self.database[name]
+        except PyMongoError as e:
+            raise RuntimeError(f"Error retrieving collection '{name}': {str(e)}")
