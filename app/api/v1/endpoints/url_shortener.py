@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from app.services.url_shortener import UrlShortenerService
 from app.core.dependencies import get_url_shortener_service
+from app.models.url_shortener import UrlShortener
 
 router = APIRouter()
 
@@ -12,3 +13,10 @@ async def get_urls(url_shortener_service: UrlShortenerService = Depends(get_url_
         return {"ok": False, "message": "No shorteners found"}
     
     return {"ok": True, "data": shorteners}
+
+@router.post("/url-shortener/")
+async def create_shortener(
+    shortener: UrlShortener, 
+    url_shortener_service: UrlShortenerService = Depends(get_url_shortener_service)):
+
+    return shortener

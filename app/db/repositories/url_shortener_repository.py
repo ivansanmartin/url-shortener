@@ -7,7 +7,7 @@ class UrlShortenerRepository:
     def create_shortener(self):
         pass
     
-    def get_shortener(self):
+    def get_shorteners(self):
         shorteners = list(self.collection.find())
         for shortener in shorteners:
             shortener["_id"] = str(shortener["_id"])

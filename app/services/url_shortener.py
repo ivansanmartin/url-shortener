@@ -6,3 +6,6 @@ class UrlShortenerService:
     
     def get_shortener(self):
         return self.url_shortener_repository.get_shortener()
+    
+    def create_shortener(self):
+        return self.url_shortener_repository.create_shortener()
