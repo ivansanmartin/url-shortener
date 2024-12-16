@@ -1,11 +1,15 @@
-from app.db.repositories.url_shortener_repository import UrlShortenerRepository
+from pymongo.collection import Collection
+from app.models.url_shortener import UrlShortener
 
-class UrlShortenerService:
-    def __init__(self, url_shortener_repository: UrlShortenerRepository):
-        self.url_shortener_repository = url_shortener_repository
-    
+class UrlShortenerService():
+    def __init__(self, collection: Collection):
+        self.collection = collection
+
     def get_shortener(self):
-        return self.url_shortener_repository.get_shortener()
+        data = self.collection.find_one()
+        print(data)
+        return {"ok": True}
     
-    def create_shortener(self):
-        return self.url_shortener_repository.create_shortener()
+    def create_shortener(self, shortener: UrlShortener):
+        self.collection.insert_one(shortener)
+        return {"ok": True}

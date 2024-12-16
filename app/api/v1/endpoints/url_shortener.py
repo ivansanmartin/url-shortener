@@ -14,9 +14,9 @@ async def get_urls(url_shortener_service: UrlShortenerService = Depends(get_url_
     
     return {"ok": True, "data": shorteners}
 
-@router.post("/url-shortener/")
+@router.post("/url-shortener")
 async def create_shortener(
     shortener: UrlShortener, 
     url_shortener_service: UrlShortenerService = Depends(get_url_shortener_service)):
-
-    return shortener
+    response = url_shortener_service.create_shortener(shortener.model_dump())
+    return response
