@@ -2,16 +2,9 @@ POST http://localhost:8000/api/v1/url-shortener
 Content-Type: application/json
 
 {
-  "id": "64b5f9d8e0c43a2bcf123456",
-  "original_url": "https://www.example.com/some/long/path",
-  "short_url": "https://short.ly/abc123",
-  "slug": "abc123",
-  "created_at": "2024-12-16T10:30:00Z",
-  "updated_at": "2024-12-16T12:00:00Z",
-  "clicks": 25,
-  "expiration_date": "2025-01-16T10:30:00Z",
-  "metadata": {
-    "user_ip": "192.168.1.100",
-    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
-  }
+  "original_url": "https://www.example.com/some/long/path"
 }
+
+GET http://localhost:8000/api/v1/url-shorteners
+
+GET http://localhost:8000/vcrizc

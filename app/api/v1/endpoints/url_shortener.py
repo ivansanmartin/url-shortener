@@ -5,8 +5,8 @@ from app.models.url_shortener import UrlShortener
 
 router = APIRouter()
 
-@router.get("/url-shortener")
-async def get_urls(url_shortener_service: UrlShortenerService = Depends(get_url_shortener_service)):
+@router.get("/url-shorteners")
+async def get_all_shorteners(url_shortener_service: UrlShortenerService = Depends(get_url_shortener_service)):
     shorteners = url_shortener_service.get_shorteners()
     
     if not shorteners:
