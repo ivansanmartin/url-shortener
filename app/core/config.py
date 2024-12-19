@@ -9,5 +9,8 @@ env = {
         "port": os.getenv('MONGODB_PORT'),
         "username": os.getenv('MONGODB_USERNAME'),
         "password": os.getenv('MONGODB_PASSWORD')    
+    },
+    "url-shortener": {
+        "token": os.getenv('URL_SHORTENER_TOKEN')
     }
 }

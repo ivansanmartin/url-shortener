@@ -5,6 +5,7 @@ Content-Type: application/json
   "original_url": "https://www.example.com/some/long/path"
 }
 
-GET http://localhost:8000/api/v1/url-shorteners
+GET http://localhost:8000/api/v1/url-shorteners HTTP/1.1
+X-API-Key: TOKEN
 
 GET http://localhost:8000/vcrizc
