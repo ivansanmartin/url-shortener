@@ -41,7 +41,11 @@ class UrlShortenerService():
     def get_shortener(self, slug):
         try:
             data = self.collection.find_one({ "slug": slug })
-            return {"original_url": data.get('original_url')}
+            
+            if not data:
+                return {"ok": False, "message": "URL Shortener not found."}
+            
+            return {"ok": True, "original_url": data.get('original_url')}
         except PyMongoError as e:
             return {"ok": False, "error": str(e)}
             
