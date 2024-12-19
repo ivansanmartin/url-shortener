@@ -40,7 +40,7 @@ class UrlShortenerService():
         
     def get_shortener(self, slug):
         try:
-            data = self.collection.find_one({ "slug": slug })
+            data = self.collection.find_one_and_update({ "slug": slug }, { "$inc": {"clicks": 1} })
             
             if not data:
                 return {"ok": False, "message": "URL Shortener not found."}
