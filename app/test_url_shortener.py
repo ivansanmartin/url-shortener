@@ -6,7 +6,10 @@ client = TestClient(app)
 def test_create_shortener():
     response = client.post(
         "/api/v1/url-shortener",
-        headers={"Content-Type": "application/json"},
+        headers={
+            "Content-Type": "application/json",
+            "X-API-Key": "TOKEN"
+            },
         json={"original_url": "https://www.example.com/some/long/path"}
         )
     assert response.status_code == 201
