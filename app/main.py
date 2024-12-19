@@ -1,8 +1,7 @@
-from fastapi import FastAPI, Depends, status, HTTPException, Request
+from fastapi import FastAPI, Depends, status, HTTPException
 from app.api.v1.endpoints.url_shortener import router as url_shortener_router
 from app.services.url_shortener import UrlShortenerService
 from app.core.dependencies import get_url_shortener_service
-from fastapi.responses import JSONResponse
 
 app = FastAPI()
     
