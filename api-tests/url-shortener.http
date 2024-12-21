@@ -1,5 +1,6 @@
 POST http://localhost:8000/api/v1/url-shortener
 Content-Type: application/json
+X-API-Key: TOKEN
 
 {
   "original_url": "https://www.example.com/some/long/path"

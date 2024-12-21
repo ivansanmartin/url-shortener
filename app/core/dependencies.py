@@ -8,11 +8,13 @@ mongodb_url = mongodb_credentials.get('url')
 mongodb_port = mongodb_credentials.get('port')
 mongodb_username = mongodb_credentials.get('username')
 mongodb_password = mongodb_credentials.get('password')
+mongodb_database = mongodb_credentials.get('database')
+mongodb_collection = mongodb_credentials.get('collection')
 
 mongodb = MongoDB(uri=f"mongodb://{mongodb_username}:{mongodb_password}@{mongodb_url}:{mongodb_port}",
-                    database_name="url-shortener-db")
+                    database_name=mongodb_database)
 
-url_shortener_collection = mongodb.get_collection('url-shortener')
+url_shortener_collection = mongodb.get_collection(mongodb_collection)
 
 def get_url_shortener_service() -> UrlShortenerService:
     return UrlShortenerService(url_shortener_collection)
