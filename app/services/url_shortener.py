@@ -11,24 +11,6 @@ import random
 class UrlShortenerService():
     def __init__(self, collection: Collection):
         self.collection = collection
-        
-    def _process_document(self, document):
-        if isinstance(document, list):
-            return [self._process_document(item) for item in document]
-        elif isinstance(document, dict):
-            return {
-                key: self._process_document(value) for key, value in document.items()
-            }
-        elif isinstance(document, ObjectId):
-            return str(document)
-        elif isinstance(document, datetime):
-            return document.isoformat()
-        return document
-    
-    def _get_random_string(self, length):
-        letters = string.ascii_lowercase
-        result_str = "".join(random.choice(letters) for i in range(length))
-        return result_str
 
     def get_shorteners(self):
         try:
@@ -70,3 +52,21 @@ class UrlShortenerService():
             return {"ok": True, "message": "URL Shortener created succesfully"}
         except PyMongoError as e:
             return {"ok": False, "error": e}
+        
+    def _process_document(self, document):
+        if isinstance(document, list):
+            return [self._process_document(item) for item in document]
+        elif isinstance(document, dict):
+            return {
+                key: self._process_document(value) for key, value in document.items()
+            }
+        elif isinstance(document, ObjectId):
+            return str(document)
+        elif isinstance(document, datetime):
+            return document.isoformat()
+        return document
+    
+    def _get_random_string(self, length):
+        letters = string.ascii_lowercase
+        result_str = "".join(random.choice(letters) for i in range(length))
+        return result_str
