@@ -13,6 +13,8 @@ env = {
         "collection": os.getenv('MONGODB_COLLECTION'),   
     },
     "url-shortener": {
-        "token": os.getenv('URL_SHORTENER_TOKEN')
+        "reference_id": os.getenv('URL_SHORTENER_REFERENCE_ID'),
+        "referece_key_id": os.getenv('URL_SHORTENER_KEY_ID'),
+        "api_key": os.getenv('URL_SHORTENER_API_KEY')
     }
 }
