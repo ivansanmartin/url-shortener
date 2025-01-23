@@ -9,17 +9,17 @@ def validate_security_token(request: Request):
     api_key_manager = ApiKeyManagerClient('http://localhost:8000')
     url_shortener_env = env.get('url-shortener') 
     
-    [reference_id, reference_key_id, api_key] = url_shortener_env.get('reference_id'), url_shortener_env.get('reference_key_id'), url_shortener_env.get('api_key')
+    [reference_id, reference_key_id] = url_shortener_env.get('reference_id'), url_shortener_env.get('reference_key_id')
+    api_key_entry: str = request.headers.get("X-API-Key")
     
-    verification = api_key_manager.verify_api_key(reference_id, reference_key_id, api_key)
+    print(reference_id, reference_key_id, api_key_entry)
+    verification = api_key_manager.verify_api_key(reference_id, reference_key_id, api_key_entry)
     
-    print(verification)
-    # x_api_key: str = request.headers.get("X-API-Key")
-    # if not x_api_key or x_api_key != 'TOKEN':
-    #     raise HTTPException(
-    #         status_code=status.HTTP_401_UNAUTHORIZED,
-    #         detail="Token not provided or invalid"
-    #     )
+    if not verification['ok']:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=verification['message']
+        )
 
 router = APIRouter(dependencies=[Depends(validate_security_token)])
 

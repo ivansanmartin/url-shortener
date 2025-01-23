@@ -14,7 +14,6 @@ env = {
     },
     "url-shortener": {
         "reference_id": os.getenv('URL_SHORTENER_REFERENCE_ID'),
-        "referece_key_id": os.getenv('URL_SHORTENER_KEY_ID'),
-        "api_key": os.getenv('URL_SHORTENER_API_KEY')
+        "reference_key_id": os.getenv('URL_SHORTENER_KEY_ID'),
     }
 }
