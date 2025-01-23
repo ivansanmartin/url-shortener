@@ -12,7 +12,6 @@ def validate_security_token(request: Request):
     [reference_id, reference_key_id] = url_shortener_env.get('reference_id'), url_shortener_env.get('reference_key_id')
     api_key_entry: str = request.headers.get("X-API-Key")
     
-    print(reference_id, reference_key_id, api_key_entry)
     verification = api_key_manager.verify_api_key(reference_id, reference_key_id, api_key_entry)
     
     if not verification['ok']:
