@@ -27,6 +27,13 @@ service:
   port: 80
   targetPort: 8000
 
+ingress:
+  enabled: true
+  className: nginx
+  host: ivsm.link
+  path: /
+  pathType: ImplementationSpecific
+
 securityContext:
   runAsUser: 0
 
