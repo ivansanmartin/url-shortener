@@ -1,0 +1,30 @@
+replicaCount: 1
+
+image:
+  repository: 192.168.1.200:30002/ivansanmartin/url-shortener
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+nameOverride: "url-shortener"
+fullnameOverride: "url-shortener"
+
+namespace: ivansanmartin
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 64Mi
+  requests:
+    cpu: 100m
+    memory: 32Mi
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+
+securityContext:
+  runAsUser: 0
+
+labels:
+  app: url-shortener
