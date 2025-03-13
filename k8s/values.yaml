@@ -20,7 +20,7 @@ resources:
 
 secretRef:
   - secretRef:
-      name: api-key-manager-secret
+      name: url-shortener-secret
 
 service:
   type: ClusterIP
