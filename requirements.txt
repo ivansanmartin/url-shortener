@@ -1,9 +1,9 @@
 annotated-types==0.7.0
 anyio==4.7.0
-api-key-manager-client @ git+https://github.com/ivansanmartin/api-key-manager-client.git@aeff920187c67fc21eda9986d620e8e3edc38643#subdirectory=python-package
+api-key-manager-client @ git+https://github.com/ivansanmartin/api-key-manager-client.git@2e170c0a7ad333780010b93f9a702d427aeb7050#subdirectory=python-package
 bcrypt==4.2.1
 build==1.2.2.post1
-certifi==2024.8.30
+certifi==2025.1.31
 charset-normalizer==3.4.1
 click==8.1.7
 colorama==0.4.6

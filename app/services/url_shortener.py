@@ -4,7 +4,6 @@ from pymongo.errors import PyMongoError
 from bson import ObjectId
 from datetime import datetime
 from datetime import timedelta
-from datetime import date
 import string
 import random
 
