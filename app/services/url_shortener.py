@@ -37,6 +37,8 @@ class UrlShortenerService():
             slug = self._get_random_string(6)
             short_url = f"ivsm.link/{slug}"
             
+            shortener["original_url"] = str(shortener["original_url"])
+            
             shortener.update({
                 "short_url": short_url,
                 "slug": slug,

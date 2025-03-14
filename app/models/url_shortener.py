@@ -1,6 +1,6 @@
-from pydantic import BaseModel, Field, HttpUrl
-from typing import Optional, Dict
-from datetime import datetime
+from pydantic import BaseModel, Field, UrlConstraints
+from pydantic_core import Url
+from typing_extensions import Annotated
 
 class UrlShortener(BaseModel):
-    original_url: str = Field(..., description="The original URL to be shortened")
+    original_url: Annotated[Url, UrlConstraints(allowed_schemes=["http", "https"])] = Field(..., description="The original URL to be shortened")

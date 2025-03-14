@@ -1,6 +1,6 @@
-POST http://localhost:8000/api/v1/url-shortener
+POST http://localhost:8080/api/v1/url-shortener
 Content-Type: application/json
-X-API-Key: TOKEN
+X-API-Key: key_dL9sULwpqU0dUwFYcWYYjTKBEHycTxH2JfM8pzhbEX4
 
 {
   "original_url": "https://www.example.com/some/long/path"
