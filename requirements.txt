@@ -1,6 +1,8 @@
 annotated-types==0.7.0
 anyio==4.7.0
-api-key-manager-client @ git+https://github.com/ivansanmartin/api-key-manager-client.git@85ea26b48c2d34974c178a302b48ca94e9eefa66#subdirectory=python-package
+api-key-manager-client @ git+https://github.com/ivansanmartin/api-key-manager-client.git@aeff920187c67fc21eda9986d620e8e3edc38643#subdirectory=python-package
+bcrypt==4.2.1
+build==1.2.2.post1
 certifi==2024.8.30
 charset-normalizer==3.4.1
 click==8.1.7
@@ -25,13 +27,16 @@ pydantic==2.10.3
 pydantic_core==2.27.1
 Pygments==2.18.0
 pymongo==4.10.1
+pyproject_hooks==1.2.0
 pytest==8.3.4
 python-dotenv==1.0.1
 python-multipart==0.0.19
 PyYAML==6.0.2
+redis==5.2.1
 requests==2.32.3
 rich==13.9.4
 rich-toolkit==0.12.0
+setuptools==76.0.0
 shellingham==1.5.4
 sniffio==1.3.1
 starlette==0.41.3
@@ -41,3 +46,4 @@ urllib3==2.3.0
 uvicorn==0.32.1
 watchfiles==1.0.1
 websockets==14.1
+wheel==0.45.1

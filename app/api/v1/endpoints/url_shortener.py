@@ -3,16 +3,13 @@ from app.services.url_shortener import UrlShortenerService
 from app.core.dependencies import get_url_shortener_service
 from app.models.url_shortener import UrlShortener
 from api_key_manager_client import ApiKeyManagerClient
-from app.core.config import env
 
 def validate_security_token(request: Request):
     api_key_manager = ApiKeyManagerClient('http://localhost:8000')
-    url_shortener_env = env.get('url-shortener') 
     
-    [reference_id, reference_key_id] = url_shortener_env.get('reference_id'), url_shortener_env.get('reference_key_id')
     api_key_entry: str = request.headers.get("X-API-Key")
     
-    verification = api_key_manager.verify_api_key(reference_id, reference_key_id, api_key_entry)
+    verification = api_key_manager.verify_api_key(api_key_entry)
     
     if not verification['ok']:
         raise HTTPException(
