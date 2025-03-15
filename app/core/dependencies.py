@@ -16,5 +16,8 @@ mongodb = MongoDB(uri=f"mongodb://{mongodb_username}:{mongodb_password}@{mongodb
 
 url_shortener_collection = mongodb.get_collection(mongodb_collection)
 
+print(f"URL Shortener ID reference: {env.get('api_key_manager').get('api_id_url_shortener')}")
+print(f"URL api-key-manager: {env.get('api_key_manager').get('url')}")
+
 def get_url_shortener_service() -> UrlShortenerService:
     return UrlShortenerService(url_shortener_collection)
