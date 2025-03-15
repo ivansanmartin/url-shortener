@@ -27,17 +27,6 @@ service:
   port: 80
   targetPort: 8080
 
-ingress:
-  enabled: true
-  className: nginx
-  annotations:
-    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, PATCH, DELETE, OPTIONS"
-    nginx.ingress.kubernetes.io/proxy-body-size: "8m"
-    nginx.ingress.kubernetes.io/use-regex: "true"
-  host: ivsm.link
-  path: /
-  pathType: ImplementationSpecific
-
 securityContext:
   runAsUser: 0
 
