@@ -6,6 +6,7 @@ from datetime import datetime
 from datetime import timedelta
 import string
 import random
+from fastapi.encoders import jsonable_encoder
 
 class UrlShortenerService():
     def __init__(self, collection: Collection):
@@ -50,7 +51,10 @@ class UrlShortenerService():
             })
             
             self.collection.insert_one(shortener)
-            return {"ok": True, "message": "URL Shortener created succesfully"}
+            del shortener["_id"]
+            
+            
+            return {"ok": True, "message": "URL Shortener created succesfully", "data": jsonable_encoder(shortener)}
         except PyMongoError as e:
             return {"ok": False, "error": e}
         
